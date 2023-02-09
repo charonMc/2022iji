@@ -102,9 +102,11 @@ $question="
 98.	(1)台灣是屬缺水地區，每人每年實際分配到可利用水量是世界平均值的約多少？①六分之一 ②二分之一 ③四分之一 ④五分之一。
 99.	(3)台灣年降雨量是世界平均值的 2.6 倍，卻仍屬缺水地區，原因何者為非？①台灣由於山坡陡峻，以及颱風豪雨雨勢急促，大部分的降雨量皆迅速流入海洋 ②降雨量在地域、季節分佈極不平均 ③水庫蓋得太少 ④台灣自來水水價過於便宜。
 100.(3)電源插座堆積灰塵可能引起電氣意外火災，維護保養時的正確做法是？① 可以先用刷子刷去積塵 ②直接用吹風機吹開灰塵就可以了 ③應先關閉電源總開關箱內控制該插座的分路開關 ④可以用金屬接點清潔劑噴在插座中去除銹蝕。
+101.(123) SQL 語法的敘述，何者正確？ ①insert 語法可用來做資料的新增 ②update 語法可用來做資料的更新 ③select 語法可用來做資料的查詢 ④insert、update、select 等三種語法統稱為非查詢語法 。
+
 ";
 $questionArray=explode("。",$question);
-unset($questionArray[100]);
+unset($questionArray[count($questionArray)-1]);
 $option=["①","②","③","④"];
 // print_r($option);
 
@@ -114,15 +116,15 @@ foreach($questionArray as $key => $row){
     $tmpArray=explode($option[0],$row);
     // q 1234
     $tmpArray2=explode($option[1],$tmpArray[1]);
-    // // 1 234
+    // 1 234
     $tmpArray3=explode($option[2],$tmpArray2[1]);
-    // // 2 34
+    // 2 34
     $tmpArray4=explode($option[3],$tmpArray3[1]);
-    // // 3 4
+    // 3 4
     $tmpArray48763=explode("(",$tmpArray[0]);
-    $tmpArray5=substr($tmpArray48763[1],0,1);
+    $tmpArray5=explode(")",$tmpArray48763[1]);
     $tmpArrayque=explode(")",$tmpArray[0]);
-    $questionArrays[$key]=[$tmpArrayque[1],$tmpArray5,$tmpArray2[0],$tmpArray3[0],$tmpArray4[0],$tmpArray4[1]];
+    $questionArrays[$key]=[$tmpArrayque[1],$tmpArray5[0],$tmpArray2[0],$tmpArray3[0],$tmpArray4[0],$tmpArray4[1]];
 }
 
 // echo "<pre>";
@@ -134,6 +136,9 @@ foreach($questionArray as $key => $row){
 echo "<pre>";
 print_r($questionArrays);
 echo "</pre>";
+// echo "<pre>";
+// print_r($tmpArray5);
+// echo "</pre>";
 
 
 

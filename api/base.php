@@ -154,6 +154,7 @@ function q($sql){
 
 
 $Question=new DB('question');
+$Subject=new DB('subject');
 
 
 
