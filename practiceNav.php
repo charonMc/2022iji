@@ -1,5 +1,5 @@
-<div class=" navbar fixed-top  text-center" style="font-size: small;background-color:cyan">
-       <form action="./api/loadquestion.php" method="post" class="m-auto">
+<div class=" navbar fixed-top  " style="font-size: small;background-color:cyan">
+       <form id="queform" action="./api/loadquestion.php" method="post" class="m-auto" >
 
             <input type="radio" name="by" value="bynum" checked>依題目編號<input type="number" name="min" value="1">題 到第<input type="number" name="max" value="100">題 (1~) <br>
             <input type="radio" name="by" value="byrandom">隨機亂數抽題：共抽<input type="number" name="rand" value="50">題  (1~50)) <br>
@@ -16,7 +16,7 @@
                 <option value="9">資訊類共用科目-工作項目05：資訊安全(40題)</option>
             </select><br>
             
-            <input type="radio" name="by" value="bycommon">共同科目:
+            <input type="radio" name="by" value="bycommon">共同科目: 
             <select name="common">
                 <option value="1" selected>職業安全衛生(100題)</option>
                 <option value="2">工作倫理與職業道德(100題)</option>
@@ -26,7 +26,7 @@
             
             <br>
             <div>
-                <input class="btn btn-info btn-sm" type="submit" value="載入題目">
+                <button class="btn btn-info btn-sm" type="button" id="getQue">載入題目</button>
                 <button class="btn btn-warning btn-sm">關閉視窗</button>
             </div>
 
