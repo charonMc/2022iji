@@ -45,6 +45,10 @@ include_once("./api/base.php");
 
 <script>
     $(document).ready(function() {
+        // 禁止右鍵
+        document.oncontextmenu = function() {
+            window.event.returnValue = false;
+        }
 
         $("#getQue").click(function getQue() {
             queform = {};
@@ -54,6 +58,7 @@ include_once("./api/base.php");
             queform['rand'] = $("input[name=rand]").val();
             queform['job'] = $("select[name=job]").val();
             queform['common'] = $("select[name=common]").val();
+            queform['page'] = "practice";
             // console.log("queform", queform);
 
             // by min max rand job common
@@ -65,6 +70,8 @@ include_once("./api/base.php");
                 $("#questions").html(que);
             })
         })
+
+        $("#")
 
 
 
