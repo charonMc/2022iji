@@ -18,13 +18,11 @@ include_once("./api/base.php");
     <?php
     include("practiceNav.php");
     ?>
-    <div style="display:block;height:300px"></div>
+    <!-- <div style="display:block;height:300px"></div> -->
 
     <div style="height: 150px;"></div>
-    <div id="questions" class="text-center">
-        <pre>
-
-
+    <div id="questions">
+        <pre class="text-center">
 
 複習小技巧：
 
@@ -35,7 +33,7 @@ include_once("./api/base.php");
 複習完之後，將打勾的題目寄回自己的信箱，日後可針對這些題目加強即可。
 
 
-
+<img src="./picture/906q.jpg">
 
     </pre>
     </div>
@@ -56,7 +54,7 @@ include_once("./api/base.php");
             queform['rand'] = $("input[name=rand]").val();
             queform['job'] = $("select[name=job]").val();
             queform['common'] = $("select[name=common]").val();
-            console.log("queform", queform);
+            // console.log("queform", queform);
 
             // by min max rand job common
 
@@ -64,8 +62,15 @@ include_once("./api/base.php");
                 console.log("ya");
                 // que=JSON.parse(data);
                 console.log(que);
-                // $("#questions").text(data);
+                $("#questions").html(que);
             })
         })
+
+
+
+
+
+
+
     })
 </script>
