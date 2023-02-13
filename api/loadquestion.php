@@ -1,13 +1,30 @@
 <?php
 include_once("base.php");
+
 dd($_POST);
 
 
 // $_POST["by"]決定選擇題目的方式 
-// $_SESSION['queNum']決定列出哪些題目
+// $_SESSION['queNum']決定列出哪些題目 
 switch($_POST["by"]){
     case "bynum":
         echo $_POST["by"];
+
+        $queNum=[];
+        $min=$_POST['min'];
+        $max=$_POST['max'];
+
+        for($i=$min;$i<=$max;$i++){
+            $tmp=rand($min,$max);
+            if(in_array($tmp,$queNum)){
+                $i--;
+            }else{
+                array_push($queNum,$tmp);
+            }
+        }
+        dd($queNum);
+        // $_POST['queNum']=$queNum;
+        // echo json_encode($queNum);
     break;
 
     case "byrandom":
@@ -76,5 +93,5 @@ switch($_POST["by"]){
 
     break;
 }
-to("../practice.php");
+// to("../practice.php");
 ?>

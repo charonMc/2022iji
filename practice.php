@@ -46,19 +46,26 @@ include_once("./api/base.php");
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 <script>
-    $(document).ready(function(){
+    $(document).ready(function() {
 
         $("#getQue").click(function getQue() {
-            queform=$("input[name=by]:checked").val();
-            console.log("queform",queform);
+            queform = {};
+            queform['by'] = $("input[name=by]:checked").val();
+            queform['min'] = $("input[name=min]").val();
+            queform['max'] = $("input[name=max]").val();
+            queform['rand'] = $("input[name=rand]").val();
+            queform['job'] = $("select[name=job]").val();
+            queform['common'] = $("select[name=common]").val();
+            console.log("queform", queform);
 
-            
-            
-            
-            
-            // $.post("./api/loadquestion.php", () => {
-                
-                // })
+            // by min max rand job common
+
+            $.post("./api/loadquestion.php", queform, (que) => {
+                console.log("ya");
+                // que=JSON.parse(data);
+                console.log(que);
+                // $("#questions").text(data);
             })
         })
+    })
 </script>
