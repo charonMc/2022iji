@@ -90,8 +90,22 @@ include_once("./api/base.php");
             console.log("checkbox2",opts.eq(1).prop("checked"));
             console.log("checkbox3",opts.eq(2).prop("checked"));
             console.log("checkbox4",opts.eq(3).prop("checked"));
-
-             asnArr.push($(event.target).val());
+            index="";
+            function findnum(item,index){
+                if(opts.eq(index??0).prop("checked")){
+                    ansArr.push($(event.target).val());
+                }
+            };
+            ansArr.forEach(findnum())
+            // if(ansArr.includes($(event.target).val())){
+            //     console.log("in_array");
+            //     ansArr.splice(index,1);
+            // }else{
+            //     console.log("not_in_array");
+            //     ansArr.push($(event.target).val());
+            // }
+            ansArr.sort();
+            console.log(ansArr);
 
             // if($(event.target).prop("checked")){
             //     console.log("checkbox",$(event.target).val(),"checked");
