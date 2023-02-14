@@ -13,15 +13,20 @@ switch ($_POST["by"]) {
         $queNum = [];
         $min = $_POST['min'];
         $max = $_POST['max'];
-
+        // 順序排序
         for ($i = $min; $i <= $max; $i++) {
-            $tmp = rand($min, $max);
-            if (in_array($tmp, $queNum)) {
-                $i--;
-            } else {
-                array_push($queNum, $tmp);
-            }
+            array_push($queNum, $i);
+
         }
+        //隨機排序 
+        // for ($i = $min; $i <= $max; $i++) {
+        //     $tmp = rand($min, $max);
+        //     if (in_array($tmp, $queNum)) {
+        //         $i--;
+        //     } else {
+        //         array_push($queNum, $tmp);
+        //     }
+        // }
         // dd($queNum);
         break;
 
@@ -55,19 +60,14 @@ switch ($_POST["by"]) {
                 array_push($queNum, $tmp);
             }
         }
-
-
         // echo $subject['subject_name'];
         // echo "<br>";
         // dd($queNum);
-
-
-
         break;
 
     case "bycommon":
         // echo $_POST["by"];
-        // echo $_POST["common"];
+        // echo $_POST["common"]+9;
 
         $queNum = [];
         $subjectNum = $_POST["common"] + 9;
@@ -102,10 +102,18 @@ for ($i = 0; $i < 4; $i++) {
 }
 
 echo "<table class=\"col-6 border border-4 rounded-1 m-auto\" style=\"border-collapse:collapse\">";
+echo "
+<tr class=\"border border-4 rounded-1\" style=\"border-collapse:collapse;height:2rem;\">
+<td class=\"border border-4 rounded-1 text-center\" style=\"width:4%\">題號</td>
+ ";
+ if ($_POST["page"] = "practice") {
+    echo "<td class=\"border border-4 rounded-1 text-center\" style=\"width:4%\">標準答案</td>";
+}
+echo "
+<td class=\"border border-4 rounded-1 text-center\" style=\"width:4%\" >你的答案</td>
+<td class=\"text-center\"style=\"width:70%;\">題目</td>";
 foreach ($queNum as $key => $que) {
     $question = $Question->find($que);
-
-
 
     $quePic = "./picture/" . $question['id'] . "q.jpg";
     $opt1Pic = "./picture/" . $question['id'] . "a1.jpg";
@@ -121,121 +129,96 @@ foreach ($queNum as $key => $que) {
     //     [1]1   opt2     2 opt4
     //     [2]4   opt3     3 opt1
     //     [3]2   opt4     4 opt3
-    $optarr=[];
-    if (file_exists("." . $opt1Pic)){
-
-        for($i=0;$i<4;$i++){
-            $num=$i+1;
-            $optnow=${"opt".$optrand[$i]."Pic"};
-            $opt{$optrand[$i]}="<input type=\"radio\" name=\"ans".($key + 1)."\" value=\"".($i+1)."\">" . "<img src=\"" . $optnow . "\">" . "<br>" ;
-            array_push($optarr,$opt{$optrand[$i]});
-            if($optrand[$i]==$question['ans']){
-                $ans=$i+1;
-            }
-            
-        }
-    }else{
-        for($i=0;$i<4;$i++){
-            $num=$i+1;
-            $tmp="opt".$optrand[$i];
-            $optnow=htmlspecialchars($question[$tmp]);
-            $opt{$optrand[$i]}="<input type=\"radio\" name=\"ans".($key + 1)."\" value=\"".($i+1)."\">" . $optnow . "<br>" ;
-            array_push($optarr,$opt{$optrand[$i]});
-            if($optrand[$i]==$question['ans']){
-                $ans=$i+1;
-            }
-            
-        }
-    }
-    // 印出隨機化選項
-    // foreach($optarr as $row){
-    //     echo $row;
-    // }            
-    // echo "</td></tr>";
-    
-
-    
-
-
-
-    if ($hasPic) {
-        // 有附圖
-        
-        echo "
-        <tr class=\"border border-4 rounded-1\" style=\"border-collapse:collapse\">
-        <td class=\"border border-4 rounded-1 text-center\" style=\"width:3%\">" . ($key + 1) . "</td>
-        ";
-
-        // 練習頁面插入答案
-        if ($_POST["page"] = "practice") {
-            echo "<td class=\"border border-4 rounded-1 text-center\" style=\"width:4%\">" . $ans . "</td>";
-        }
-
-        echo "
-        <td class=\"border border-4 rounded-1 text-center\" style=\"width:4%\" id=\"ans" . ($key + 1) . "\"></td>
-        <td style=\"width:70%\">" .
-            $question['que'] . "<br>";
-
-        if (file_exists("." . $quePic)) {
-            // 圖片題目
-            echo "<img src=\"" . $quePic . "\">" . "<br>";
-        }
+    $optarr = [];
+    $ansnum = [];
+    if ($question['ans'] < 10) {
+        // 單選
         if (file_exists("." . $opt1Pic)) {
             // 圖片選項
-
-            foreach($optarr as $row){
-                echo $row;
-            }            
-            echo "</td></tr>";
-            // echo
-            // "<input type=\"radio\" name=\"ans" . ($key + 1) . "\" value=\"1\">" . "<img src=\"" . $opt1Pic . "\">" . "<br>" .
-            // "<input type=\"radio\" name=\"ans" . ($key + 1) . "\" value=\"2\">" . "<img src=\"" . $opt2Pic . "\">" . "<br>" .
-            // "<input type=\"radio\" name=\"ans" . ($key + 1) . "\" value=\"3\">" . "<img src=\"" . $opt3Pic . "\">" . "<br>" .
-            // "<input type=\"radio\" name=\"ans" . ($key + 1) . "\" value=\"4\">" . "<img src=\"" . $opt4Pic . "\">" . "<br>" .
-            // "</td>
-            // </tr>
-            // ";
+            for ($i = 0; $i < 4; $i++) {
+                $num = $i + 1;
+                $optnow = ${"opt" . $optrand[$i] . "Pic"};
+                $opt[$optrand[$i]] = "<input type=\"radio\" name=\"ans" . ($key + 1) . "\" value=\"" . ($i + 1) . "\">" . "<img src=\"" . $optnow . "\">" . "<br>";
+                array_push($optarr, $opt[$optrand[$i]]);
+                if ($optrand[$i] == $question['ans']) {
+                    $ans = $i + 1;
+                }
+            }
         } else {
             // 文字選項
-            echo
-                "<input type=\"radio\" name=\"ans" . ($key + 1) . "\" value=\"1\">" . htmlspecialchars($question['opt1']) . "<br>" .
-                "<input type=\"radio\" name=\"ans" . ($key + 1) . "\" value=\"2\">" . htmlspecialchars($question['opt2']) . "<br>" .
-                "<input type=\"radio\" name=\"ans" . ($key + 1) . "\" value=\"3\">" . htmlspecialchars($question['opt3']) . "<br>" .
-                "<input type=\"radio\" name=\"ans" . ($key + 1) . "\" value=\"4\">" . htmlspecialchars($question['opt4']) . "<br>" .
-                "</td>
-            </tr>
-            ";
+            for ($i = 0; $i < 4; $i++) {
+                $num = $i + 1;
+                $tmp = "opt" . $optrand[$i];
+                $optnow = htmlspecialchars($question[$tmp]);
+                $opt[$optrand[$i]] = "<input type=\"radio\" name=\"ans" . ($key + 1) . "\" value=\"" . ($i + 1) . "\">" . $optnow . "<br>";
+                array_push($optarr, $opt[$optrand[$i]]);
+                if ($optrand[$i] == $question['ans']) {
+                    $ans = $i + 1;
+                }
+            }
         }
     } else {
-        // 沒有附圖
-        echo "
-    <tr class=\"border border-4 rounded-1\" style=\"border-collapse:collapse\">
-        <td class=\"border border-4 rounded-1 text-center\" style=\"width:3%\">" . ($key + 1) . "</td>";
-        // 練習頁面插入答案
-        if ($_POST["page"] = "practice") {
-            echo "<td class=\"border border-4 rounded-1 text-center\" style=\"width:4%\">" . $ans . "</td>";
-        }
-            echo "
-            <td class=\"border border-4 rounded-1 text-center\" style=\"width:4%\" id=\"ans" . ($key + 1) . "\"></td>
-            <td style=\"width:70%\">" .
-                $question['que'] . "<br>";
+        // 多選
+        if (file_exists("." . $opt1Pic)) {
+            // 圖片選項
+            for ($i = 0; $i < 4; $i++) {
+                $num = $i + 1;
+                $optnow = ${"opt" . $optrand[$i] . "Pic"};
+                $opt[$optrand[$i]] = "<input type=\"checkbox\" name=\"ans" . ($key + 1) . "\" value=\"" . ($i + 1) . "\">" . "<img src=\"" . $optnow . "\">" . "<br>";
+                array_push($optarr, $opt[$optrand[$i]]);
+                $ansarr = array_map('intval', str_split($question['ans']));
+                $ansnum = [];
+                foreach ($ansarr as $row) {
+                    if ($optrand[$i] == $row) {
+                        array_push($ansnum, $i+1);
+                    }
+                }
+            }
+        } else {
+            // 文字選項
+            for ($i = 0; $i < 4; $i++) {
+                $num = $i + 1; //選項編號
+                $tmp = "opt" . $optrand[$i]; //隨機選項
+                $optnow = htmlspecialchars($question[$tmp]); //選項內容
+                $opt[$optrand[$i]] = "<input type=\"checkbox\" name=\"ans" . ($key + 1) . "\" value=\"" . ($i + 1) . "\">" . $optnow . "<br>";
+                array_push($optarr, $opt[$optrand[$i]]); //選項內容放進陣列
+                $ansarr = array_map('intval', str_split($question['ans']));//答案從數字字串拆解成整數陣列
+                foreach ($ansarr as $row) { 
+                    //遍歷隨機選項 等於答案就把選項編號放入陣列
+                    if ($optrand[$i] == $row) {
+                        array_push($ansnum, $i+1);
+                    }
+                }
+            }
+            sort($ansnum);//放入陣列的順序是隨機的 降序排列
+            $ans = implode("", $ansnum); //陣列轉字串
 
-                foreach($optarr as $row){
-                    echo $row;
-                }            
-                echo "</td></tr>";
-        //         echo 
-        //         "<input type=\"radio\" name=\"ans" . ($key + 1) . "\" value=\"1\">" . htmlspecialchars($question['opt1']) . "<br>" .
-        //         "<input type=\"radio\" name=\"ans" . ($key + 1) . "\" value=\"2\">" . htmlspecialchars($question['opt2']) . "<br>" .
-        //         "<input type=\"radio\" name=\"ans" . ($key + 1) . "\" value=\"3\">" . htmlspecialchars($question['opt3']) . "<br>" .
-        //         "<input type=\"radio\" name=\"ans" . ($key + 1) . "\" value=\"4\">" . htmlspecialchars($question['opt4']) . "<br>" .
-        //         "</td>
-        // </tr>
-        // ";
+        }
     }
 
+    echo "
+        <tr class=\"border border-4 rounded-1\" style=\"border-collapse:collapse\">
+        <td class=\"border border-4 rounded-1 text-center\" style=\"width:4%\">" . ($key + 1) . "</td>
+        ";
+    // 練習頁面插入答案
+    if ($_POST["page"] = "practice") {
+        echo "<td class=\"border border-4 rounded-1 text-center\" style=\"width:4%\">" . $ans . "</td>";
+    }
+    echo "
+        <td class=\"border border-4 rounded-1 text-center\" style=\"width:4%\" id=\"ans" . ($key + 1) . "\"></td>
+        <td style=\"width:70%\">" .
+        $question['que'] . "<br>";
 
+    if (file_exists("." . $quePic)) {
+        // 圖片題目
+        echo "<img src=\"" . $quePic . "\">" . "<br>";
+    }
 
+    // 印出隨機化選項
+    foreach ($optarr as $row) {
+        echo $row;
+    }
+    echo "</td></tr>";
 
 
     // 題號 答案 題目 選項

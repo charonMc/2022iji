@@ -66,12 +66,14 @@ include_once("./api/base.php");
             $.post("./api/loadquestion.php", queform, (que) => {
                 console.log("ya");
                 // que=JSON.parse(data);
-                console.log(que);
+                // console.log(que);
                 $("#questions").html(que);
             })
         })
 
-        $("#")
+        $(":radio").change(function(){
+            console.log(prev().prev())
+        })
 
 
 
