@@ -31,7 +31,7 @@ include_once("./api/base.php");
 系統會自動將答錯的題目打勾，若自已有不熟練的題目也可自行打勾。
 
 複習完之後，將打勾的題目寄回自己的信箱，日後可針對這些題目加強即可。
-
+<input type="radio" name="ans1" id=""><input type="radio" name="ans1" id=""><input type="radio" name="ans1" id="">
 
 <img src="./picture/906q.jpg">
 
@@ -64,21 +64,50 @@ include_once("./api/base.php");
             // by min max rand job common
 
             $.post("./api/loadquestion.php", queform, (que) => {
-                console.log("ya");
+                console.log("load success");
                 // que=JSON.parse(data);
                 // console.log(que);
                 $("#questions").html(que);
+                
             })
         })
-
-        $(":radio").change(function(){
-            console.log(prev().prev())
+        // 單選顯示選項編號在作答欄
+        $(document).on('change',"input[type='radio']",function(event){
+            console.log(event);
+            console.log("radio",$(event.target).val());
+            $(event.target).parent().prev().text($(event.target).val());
         })
+        // 多選
+        ansArr=[];
+        $(document).on('change',"input[type='checkbox']",function(event){
+            console.log("checkbox",$(event.target).val());
+            console.log($(event.target));
+            opts=$(event.target).parent().find("input");
+            console.log("opts",opts);
 
+            console.log("optschild",opts.children());
+            console.log("checkbox1",opts.eq(0).prop("checked"));
+            console.log("checkbox2",opts.eq(1).prop("checked"));
+            console.log("checkbox3",opts.eq(2).prop("checked"));
+            console.log("checkbox4",opts.eq(3).prop("checked"));
 
+             asnArr.push($(event.target).val());
 
-
-
+            // if($(event.target).prop("checked")){
+            //     console.log("checkbox",$(event.target).val(),"checked");
+            //     console.log("checkbox1",opts.eq(0).prop("checked"));
+            //     console.log("checkbox2",opts.eq(1).prop("checked"));
+            //     console.log("checkbox3",opts.eq(2).prop("checked"));
+            //     console.log("checkbox4",opts.eq(3).prop("checked"));
+            //     // asnArr.push($(event.target).val());
+            // }else{
+            //     console.log("checkbox",$(event.target).val(),"checked");
+            //     console.log("checkbox1",opts.eq(0).prop("checked"));
+            //     console.log("checkbox2",opts.eq(1).prop("checked"));
+            //     console.log("checkbox3",opts.eq(2).prop("checked"));
+            //     console.log("checkbox4",opts.eq(3).prop("checked"));
+            //     }
+        })
 
 
     })

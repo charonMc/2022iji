@@ -1,8 +1,8 @@
 <div class=" navbar fixed-top  " style="font-size: small;background-color:cyan">
        <form id="queform" action="./api/loadquestion.php" method="post" class="m-auto" >
 
-            <input type="radio" name="by" value="bynum" checked>依題目編號<input type="number" name="min" value="1">題 到第<input type="number" name="max" value="100">題 (1~1365) <br>
-            <input type="radio" name="by" value="byrandom">隨機亂數抽題：共抽<input type="number" name="rand" value="50">題  (1~50)) <br>
+            <input type="radio" name="by" value="bynum" checked>依題目編號<input type="text" name="min" value="1">題 到第<input type="text" name="max" value="100">題 (1~1365) <br>
+            <input type="radio" name="by" value="byrandom">隨機亂數抽題：共抽<input type="text" name="rand" value="50">題  (1~50)) <br>
             <input type="radio" name="by" value="byjob">依工作項目：
             <select name="job">
                 <option value="1" selected>工作項目01：作業準備(242題)</option>
