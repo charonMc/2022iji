@@ -27,7 +27,7 @@
             <br>
             <div>
                 <button class="btn btn-info btn-sm" type="button" id="getQue">載入題目</button>
-                <!-- <button class="btn btn-warning btn-sm" onclick="">關閉視窗</button> -->
+                <button class="btn btn-warning btn-sm" id="close" >關閉視窗</button>
             </div>
 
         </form>

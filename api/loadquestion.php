@@ -100,7 +100,7 @@ for ($i = 0; $i < 4; $i++) {
     }
 }
 
-echo "<table class=\"col-6  m-auto\" style=\"border-collapse:collapse\">";
+echo "<table class=\"col-10  m-auto\" style=\"border-collapse:collapse\">";
 echo "
 <tr class=\"\" style=\"border-collapse:collapse;height:2rem;\">
     <td class=\"\" style=\"width:6%\"></td>
