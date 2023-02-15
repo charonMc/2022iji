@@ -16,7 +16,6 @@ switch ($_POST["by"]) {
         // 順序排序
         for ($i = $min; $i <= $max; $i++) {
             array_push($queNum, $i);
-
         }
         //隨機排序 
         // for ($i = $min; $i <= $max; $i++) {
@@ -101,16 +100,25 @@ for ($i = 0; $i < 4; $i++) {
     }
 }
 
-echo "<table class=\"col-6 border border-4 rounded-1 m-auto\" style=\"border-collapse:collapse\">";
+echo "<table class=\"col-6  m-auto\" style=\"border-collapse:collapse\">";
 echo "
+<tr class=\"\" style=\"border-collapse:collapse;height:2rem;\">
+    <td class=\"\" style=\"width:6%\"></td>
+    <td class=\"text-center\" 
+        style=\"width:7%\">
+        <button class=\"btn btn-success\" 
+                style=\"width:80%;height:80%;font-size:10px\" id=\"toggleAns\">顯示答案</button></td>
+
+</tr>
+
 <tr class=\"border border-4 rounded-1\" style=\"border-collapse:collapse;height:2rem;\">
-<td class=\"border border-4 rounded-1 text-center\" style=\"width:4%\">題號</td>
+<td class=\"border border-4 rounded-1 text-center\" style=\"width:6%\">題號</td>
  ";
- if ($_POST["page"] = "practice") {
-    echo "<td class=\"border border-4 rounded-1 text-center\" style=\"width:4%\">標準答案</td>";
+if ($_POST["page"] = "practice") {
+    echo "<td class=\"border border-4 rounded-1 text-center\" style=\"width:7%\">標準答案</td>";
 }
 echo "
-<td class=\"border border-4 rounded-1 text-center\" style=\"width:4%\" >你的答案</td>
+<td class=\"border border-4 rounded-1 text-center\" style=\"width:7%\" >你的答案</td>
 <td class=\"text-center\"style=\"width:70%;\">題目</td>";
 foreach ($queNum as $key => $que) {
     $question = $Question->find($que);
@@ -170,7 +178,7 @@ foreach ($queNum as $key => $que) {
                 $ansnum = [];
                 foreach ($ansarr as $row) {
                     if ($optrand[$i] == $row) {
-                        array_push($ansnum, $i+1);
+                        array_push($ansnum, $i + 1);
                     }
                 }
             }
@@ -182,15 +190,15 @@ foreach ($queNum as $key => $que) {
                 $optnow = htmlspecialchars($question[$tmp]); //選項內容
                 $opt[$optrand[$i]] = "<input type=\"checkbox\" name=\"ans" . ($key + 1) . "\" value=\"" . ($i + 1) . "\">" . $optnow . "<br>";
                 array_push($optarr, $opt[$optrand[$i]]); //選項內容放進陣列
-                $ansarr = array_map('intval', str_split($question['ans']));//答案從數字字串拆解成整數陣列
-                foreach ($ansarr as $row) { 
+                $ansarr = array_map('intval', str_split($question['ans'])); //答案從數字字串拆解成整數陣列
+                foreach ($ansarr as $row) {
                     //遍歷隨機選項 等於答案就把選項編號放入陣列
                     if ($optrand[$i] == $row) {
-                        array_push($ansnum, $i+1);
+                        array_push($ansnum, $i + 1);
                     }
                 }
             }
-            sort($ansnum);//放入陣列的順序是隨機的 降序排列
+            sort($ansnum); //放入陣列的順序是隨機的 降序排列
             $ans = implode("", $ansnum); //陣列轉字串
 
         }
@@ -202,10 +210,10 @@ foreach ($queNum as $key => $que) {
         ";
     // 練習頁面插入答案
     if ($_POST["page"] = "practice") {
-        echo "<td class=\"border border-4 rounded-1 text-center\" style=\"width:4%\">" . $ans . "</td>";
+        echo "<td class=\"border border-4 rounded-1 text-center \" style=\"width:4%\"><span class=\"ans\" style=\"display:none;\">" . $ans . "</td>";
     }
     echo "
-        <td class=\"border border-4 rounded-1 text-center\" style=\"width:4%\" id=\"ans" . ($key + 1) . "\"></td>
+        <td class=\"border border-4 rounded-1 text-center myans\" style=\"width:4%\" id=\"ans" . ($key + 1) . "\"></td>
         <td style=\"width:70%\">" .
         $question['que'] . "<br>";
 
