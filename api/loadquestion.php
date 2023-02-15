@@ -104,7 +104,7 @@ echo "<table class=\"col-6  m-auto\" style=\"border-collapse:collapse\">";
 echo "
 <tr class=\"\" style=\"border-collapse:collapse;height:2rem;\">
     <td class=\"\" style=\"width:6%\"></td>
-    <td class=\"text-center\" 
+    <td class=\"text-center \" 
         style=\"width:7%\">
         <button class=\"btn btn-success\" 
                 style=\"width:80%;height:80%;font-size:10px\" id=\"toggleAns\">顯示答案</button></td>

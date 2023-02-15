@@ -51,6 +51,18 @@ echo "</pre>";
 
 //     $Question->save(['que'=>$row[0], 'ans'=>$row[1], 'opt1'=>$row[2], 'opt2'=>$row[3], 'opt3'=>$row[4], 'opt4'=>$row[5]]);
 // }
+
+// 單選多選
+// $question=$Question->all();
+// // dd($question);
+// foreach($question  as $key=> $row){
+//     $type=($row['ans']>10)?2:1;
+//     $row['type']=$type;
+//     $Question->save(['type'=>$type,'id'=>$row['id']]);
+// }
+// dd($que);
+
+
 ?>
 
 

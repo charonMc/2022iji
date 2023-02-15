@@ -12,7 +12,7 @@
         <h2 class="md-3">乙級【網頁設計乙級】學科(173002)測驗</h2>
         <div>
         <span>線上複習：</span> 自行選取一段題庫範圍，逐題練習
-        <p><a href="practice.php" >進入練習</a></p>
+        <p><a target="_blank" href="practice.php" >進入練習</a></p>
         </div>
         <div>
         <span>分類測驗：</span> 挑選20題(單選15題，對1題得4分，複選5題，對1題得8分)

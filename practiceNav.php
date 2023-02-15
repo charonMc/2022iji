@@ -11,7 +11,7 @@
                 <option value="4">工作項目04：資訊安全(75題)</option>
                 <option value="5">資訊類共用科目-工作項目01：電腦硬體架構(20題)</option>
                 <option value="6">資訊類共用科目-工作項目02：網路概論與應用(29題)</option>
-                <option value="7">資訊類共用科目-工作項目03：作業系統(10題)，挑選 10 題</option>
+                <option value="7">資訊類共用科目-工作項目03：作業系統(10題)</option>
                 <option value="8">資訊類共用科目-工作項目04：資訊運算思維(20題)</option>
                 <option value="9">資訊類共用科目-工作項目05：資訊安全(40題)</option>
             </select><br>
@@ -27,7 +27,7 @@
             <br>
             <div>
                 <button class="btn btn-info btn-sm" type="button" id="getQue">載入題目</button>
-                <button class="btn btn-warning btn-sm">關閉視窗</button>
+                <!-- <button class="btn btn-warning btn-sm" onclick="">關閉視窗</button> -->
             </div>
 
         </form>
