@@ -18,10 +18,10 @@
             
             <input type="radio" name="by" value="bycommon" id="bycommon">共同科目: 
             <select class="input" name="common">
-                <option value="1" selected>職業安全衛生(100題)</option>
-                <option value="2">工作倫理與職業道德(100題)</option>
-                <option value="3">環境保護(100題)</option>
-                <option value="4">節能減碳(100題)</option>
+                <option value="10" selected>職業安全衛生(100題)</option>
+                <option value="11">工作倫理與職業道德(100題)</option>
+                <option value="12">環境保護(100題)</option>
+                <option value="13">節能減碳(100題)</option>
             </select>
             
             <br>

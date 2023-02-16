@@ -26,7 +26,6 @@ switch ($_POST["by"]) {
         //         array_push($queNum, $tmp);
         //     }
         // }
-        // dd($queNum);
         break;
 
     case "byrandom":
@@ -40,7 +39,6 @@ switch ($_POST["by"]) {
                 array_push($queNum, $tmp);
             }
         }
-        // dd($queNum);
 
         break;
 
@@ -51,17 +49,20 @@ switch ($_POST["by"]) {
         $queNum = [];
         $subject = $Subject->find(['id' => $_POST["job"]]);
         $queCount = $subject['subject_end'] - $subject['subject_start'] + 1;
-        for ($i = 0; $i < $queCount; $i++) {
-            $tmp = rand($subject['subject_start'], $subject['subject_start'] + $queCount - 1);
-            if (in_array($tmp, $queNum)) {
-                $i--;
-            } else {
-                array_push($queNum, $tmp);
-            }
+        // for ($i = 0; $i < $queCount; $i++) {
+        //     $tmp = rand($subject['subject_start'], $subject['subject_start'] + $queCount - 1);
+        //     if (in_array($tmp, $queNum)) {
+        //         $i--;
+        //     } else {
+        //         array_push($queNum, $tmp);
+        //     }
+        // }
+        for ($i = 0; $i < $queCount; $i++){
+            $tmp=$subject['subject_start']+$i;
+            array_push($queNum, $tmp);
         }
         // echo $subject['subject_name'];
         // echo "<br>";
-        // dd($queNum);
         break;
 
     case "bycommon":
@@ -69,26 +70,30 @@ switch ($_POST["by"]) {
         // echo $_POST["common"]+9;
 
         $queNum = [];
-        $subjectNum = $_POST["common"] + 9;
-        $subject = $Subject->find(['id' => $subjectNum]);
+        $subject = $Subject->find(['id' => $_POST["common"]]);
         $queCount = $subject['subject_end'] - $subject['subject_start'] + 1;
-        for ($i = 0; $i < $queCount; $i++) {
-            $tmp = rand($subject['subject_start'], $subject['subject_start'] + $queCount - 1);
-            if (in_array($tmp, $queNum)) {
-                $i--;
-            } else {
-                array_push($queNum, $tmp);
-            }
+        // for ($i = 0; $i < $queCount; $i++) {
+        //     $tmp = rand($subject['subject_start'], $subject['subject_start'] + $queCount - 1);
+        //     if (in_array($tmp, $queNum)) {
+        //         $i--;
+        //     } else {
+        //         array_push($queNum, $tmp);
+        //     }
+        // }
+        for ($i = 0; $i < $queCount; $i++){
+            $tmp=$subject['subject_start']+$i;
+            array_push($queNum, $tmp);
         }
-
 
         // echo $subject['subject_name'];
         // echo "<br>";
-        // dd($queNum);
 
 
         break;
 }
+        // dd($queNum);
+
+
 // 隨機選項用的陣列
 $optrand = [];
 for ($i = 0; $i < 4; $i++) {
@@ -100,7 +105,7 @@ for ($i = 0; $i < 4; $i++) {
     }
 }
 
-echo "<table class=\"col-10  m-auto\" style=\"border-collapse:collapse\">";
+echo "<table class=\"col-8  m-auto\" style=\"border-collapse:collapse\">";
 echo "
 <tr class=\"\" style=\"border-collapse:collapse;height:2rem;\">
     <td class=\"\" style=\"width:6%\"></td>
