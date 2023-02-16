@@ -17,7 +17,7 @@ $(function() {
         // by min max rand job common
 
         //傳到後端處理並回傳題目
-        $.post("./api/loadquestion.php", queform, (que) => {
+        $.post("../api/loadquestion.php", queform, (que) => {
             console.log("load success");
             // que=JSON.parse(data);
             // console.log(que);
@@ -84,9 +84,9 @@ $(function() {
                 show = 0;
                 return false;
             }
-            show = show + 1;
+            show=1;
         })
-        if (show == 100) {
+        if (show) {
             $(".ans").hide();
         }
 
@@ -94,6 +94,7 @@ $(function() {
     })
     // 點選載入題目範圍的選項時自動切換到該選擇方式
     $(".input").on("click", function() {
+        
         switch ($(event.target).prop("name")) {
 
             case "min":
@@ -132,6 +133,6 @@ window.close();
 
 })
 function gotopractice(){
-    window.open("practice.php","_blank","width=960,height=900");
+    window.open("./practice/practice.php","_blank","width=960,height=900");
 }
 

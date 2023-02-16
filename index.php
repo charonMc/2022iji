@@ -19,24 +19,24 @@
         </div>
         <div>
         <span>分類測驗：</span> 挑選20題(單選15題，對1題得4分，複選5題，對1題得8分)
-        <p><a href="./beforetest.php?sj=1"> 第 1 題組</a>   工作項目01：作業準備(242題)，挑選 20 題</p>
-        <p><a href="./beforetest.php?sj=2"> 第 2 題組</a>   工作項目02：應用軟體安裝及使用(405題)，挑選 20 題</p>
-        <p><a href="./beforetest.php?sj=3"> 第 3 題組</a>   工作項目03：系統軟體安裝及使用(124題)，挑選 20 題</p>
-        <p><a href="./beforetest.php?sj=4"> 第 4 題組</a>   工作項目04：資訊安全(75題)，挑選 20 題</p>
-        <p><a href="./beforetest.php?sj=5"> 第 5 題組</a>   資訊類共用科目-工作項目01：電腦硬體架構(20題)，挑選 20 題</p>
-        <p><a href="./beforetest.php?sj=6"> 第 6 題組</a>   資訊類共用科目-工作項目02：網路概論與應用(29題)，挑選 20 題</p>
-        <p><a href="./beforetest.php?sj=7"> 第 7 題組</a>   資訊類共用科目-工作項目03：作業系統(10題)，挑選 10 題</p>
-        <p><a href="./beforetest.php?sj=8"> 第 8 題組</a>   資訊類共用科目-工作項目04：資訊運算思維(20題)，挑選 20 題</p>
-        <p><a href="./beforetest.php?sj=9"> 第 9 題組</a>   資訊類共用科目-工作項目05：資訊安全(40題)，挑選 20 題</p>
-        <p><a href="./beforetest.php?sj=10"> 共同科目 90006</a>   職業安全衛生(100題)，挑選 20 題</p>
-        <p><a href="./beforetest.php?sj=11"> 共同科目 90007</a>   工作倫理與職業道德(100題)，挑選 20 題</p>
-        <p><a href="./beforetest.php?sj=12"> 共同科目 90008</a>   環境保護(100題)，挑選 20 題</p>
-        <p><a href="./beforetest.php?sj=13"> 共同科目 90009</a>   節能減碳(100題)，挑選 20 題</p>
+        <p><a href="./test/beforetest.php?sj=1"> 第 1 題組</a>   工作項目01：作業準備(242題)，挑選 20 題</p>
+        <p><a href="./test/beforetest.php?sj=2"> 第 2 題組</a>   工作項目02：應用軟體安裝及使用(405題)，挑選 20 題</p>
+        <p><a href="./test/beforetest.php?sj=3"> 第 3 題組</a>   工作項目03：系統軟體安裝及使用(124題)，挑選 20 題</p>
+        <p><a href="./test/beforetest.php?sj=4"> 第 4 題組</a>   工作項目04：資訊安全(75題)，挑選 20 題</p>
+        <p><a href="./test/beforetest.php?sj=5"> 第 5 題組</a>   資訊類共用科目-工作項目01：電腦硬體架構(20題)，挑選 20 題</p>
+        <p><a href="./test/beforetest.php?sj=6"> 第 6 題組</a>   資訊類共用科目-工作項目02：網路概論與應用(29題)，挑選 20 題</p>
+        <p><a href="./test/beforetest.php?sj=7"> 第 7 題組</a>   資訊類共用科目-工作項目03：作業系統(10題)，挑選 10 題</p>
+        <p><a href="./test/beforetest.php?sj=8"> 第 8 題組</a>   資訊類共用科目-工作項目04：資訊運算思維(20題)，挑選 20 題</p>
+        <p><a href="./test/beforetest.php?sj=9"> 第 9 題組</a>   資訊類共用科目-工作項目05：資訊安全(40題)，挑選 20 題</p>
+        <p><a href="./test/beforetest.php?sj=10"> 共同科目 90006</a>   職業安全衛生(100題)，挑選 20 題</p>
+        <p><a href="./test/beforetest.php?sj=11"> 共同科目 90007</a>   工作倫理與職業道德(100題)，挑選 20 題</p>
+        <p><a href="./test/beforetest.php?sj=12"> 共同科目 90008</a>   環境保護(100題)，挑選 20 題</p>
+        <p><a href="./test/beforetest.php?sj=13"> 共同科目 90009</a>   節能減碳(100題)，挑選 20 題</p>
         </div>
         <div>
             <span>不分類測驗：</span>職業安全衛生、職業道德與工作倫理、環境保護、節能減碳各佔5%
-            <p><a href="./beforetest.php?sj=all">平時練習</a>  (網頁設計選擇846題＋資訊類共同科目119題)共965題，挑選20題(單選15題，對1題得4分，複選5題，對1題得8分)</p>
-            <p><a href="./beforetest.php?sj=test">模擬乙檢測驗</a>  (網頁設計選擇846題＋資訊類共同科目119題)共965題，挑選80題(單選60題，對1題得1分，複選20題，對1題得2分)</p>
+            <p><a href="./test/beforetest.php?sj=all">平時練習</a>  (網頁設計選擇846題＋資訊類共同科目119題)共965題，挑選20題(單選15題，對1題得4分，複選5題，對1題得8分)</p>
+            <p><a href="./test/beforetest.php?sj=test">模擬乙檢測驗</a>  (網頁設計選擇846題＋資訊類共同科目119題)共965題，挑選80題(單選60題，對1題得1分，複選20題，對1題得2分)</p>
         </div>
 
     </div>
