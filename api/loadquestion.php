@@ -1,16 +1,16 @@
 <?php
 include_once("base.php");
 
-// dd($_POST);
+dd($_POST);
 
 
 // $_POST["by"]決定選擇題目的方式 
 // $_SESSION['queNum']決定列出哪些題目 
+
+$queNum = [];
+
 switch ($_POST["by"]) {
     case "bynum":
-        // echo $_POST["by"];
-
-        $queNum = [];
         $min = $_POST['min'];
         $max = $_POST['max'];
         // 順序排序
@@ -29,8 +29,6 @@ switch ($_POST["by"]) {
         break;
 
     case "byrandom":
-        // echo $_POST["by"];
-        $queNum = [];
         for ($i = 0; $i < $_POST['rand']; $i++) {
             $tmp = rand(0, $Question->count());
             if (in_array($tmp, $queNum)) {
@@ -43,10 +41,7 @@ switch ($_POST["by"]) {
         break;
 
     case "byjob":
-        // echo $_POST["by"];
-        // echo $_POST["job"];
 
-        $queNum = [];
         $subject = $Subject->find(['id' => $_POST["job"]]);
         $queCount = $subject['subject_end'] - $subject['subject_start'] + 1;
         // for ($i = 0; $i < $queCount; $i++) {
@@ -66,10 +61,7 @@ switch ($_POST["by"]) {
         break;
 
     case "bycommon":
-        // echo $_POST["by"];
-        // echo $_POST["common"]+9;
-
-        $queNum = [];
+        
         $subject = $Subject->find(['id' => $_POST["common"]]);
         $queCount = $subject['subject_end'] - $subject['subject_start'] + 1;
         // for ($i = 0; $i < $queCount; $i++) {
@@ -151,7 +143,8 @@ foreach ($queNum as $key => $que) {
             for ($i = 0; $i < 4; $i++) {
                 $num = $i + 1;
                 $optnow = ${"opt" . $optrand[$i] . "Pic"};
-                $opt[$optrand[$i]] = "<input type=\"radio\" name=\"ans" . ($key + 1) . "\" value=\"" . ($i + 1) . "\">" . "<img src=\"." . $optnow . "\">" . "<br>";
+                $opt[$optrand[$i]] = "<input type=\"radio\" name=\"ans"
+                 . ($key + 1) . "\" value=\"" . ($i + 1) . "\">" . "<img src=\"." . $optnow . "\">" . "<br>";
                 array_push($optarr, $opt[$optrand[$i]]);
                 if ($optrand[$i] == $question['ans']) {
                     $ans = $i + 1;
@@ -163,7 +156,8 @@ foreach ($queNum as $key => $que) {
                 $num = $i + 1;
                 $tmp = "opt" . $optrand[$i];
                 $optnow = htmlspecialchars($question[$tmp]);
-                $opt[$optrand[$i]] = "<input type=\"radio\" name=\"ans" . ($key + 1) . "\" value=\"" . ($i + 1) . "\">" . $optnow . "<br>";
+                $opt[$optrand[$i]] = "<input type=\"radio\" name=\"ans"
+                 . ($key + 1) . "\" value=\"" . ($i + 1) . "\">" . $optnow . "<br>";
                 array_push($optarr, $opt[$optrand[$i]]);
                 if ($optrand[$i] == $question['ans']) {
                     $ans = $i + 1;
@@ -177,7 +171,8 @@ foreach ($queNum as $key => $que) {
             for ($i = 0; $i < 4; $i++) {
                 $num = $i + 1;
                 $optnow = ${"opt" . $optrand[$i] . "Pic"};
-                $opt[$optrand[$i]] = "<input type=\"checkbox\" name=\"ans" . ($key + 1) . "\" value=\"" . ($i + 1) . "\">" . "<img src=\"." . $optnow . "\">" . "<br>";
+                $opt[$optrand[$i]] = "<input type=\"checkbox\" name=\"ans"
+                 . ($key + 1) . "\" value=\"" . ($i + 1) . "\">" . "<img src=\"." . $optnow . "\">" . "<br>";
                 array_push($optarr, $opt[$optrand[$i]]);
                 $ansarr = array_map('intval', str_split($question['ans']));
                 $ansnum = [];
@@ -193,7 +188,8 @@ foreach ($queNum as $key => $que) {
                 $num = $i + 1; //選項編號
                 $tmp = "opt" . $optrand[$i]; //隨機選項
                 $optnow = htmlspecialchars($question[$tmp]); //選項內容
-                $opt[$optrand[$i]] = "<input type=\"checkbox\" name=\"ans" . ($key + 1) . "\" value=\"" . ($i + 1) . "\">" . $optnow . "<br>";
+                $opt[$optrand[$i]] = "<input type=\"checkbox\" name=\"ans"
+                 . ($key + 1) . "\" value=\"" . ($i + 1) . "\">" . $optnow . "<br>";
                 array_push($optarr, $opt[$optrand[$i]]); //選項內容放進陣列
                 $ansarr = array_map('intval', str_split($question['ans'])); //答案從數字字串拆解成整數陣列
                 foreach ($ansarr as $row) {
