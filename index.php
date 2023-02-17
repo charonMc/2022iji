@@ -15,10 +15,10 @@
         <h2 class="md-3">乙級【網頁設計乙級】學科(173002)測驗</h2>
         <div>
         <span>線上複習：</span> 自行選取一段題庫範圍，逐題練習
-        <p><button class="btn btn-success" onclick="gotopractice()" >進入練習</button></p>
+        <p><button class="btn btn-success" onclick="to('./practice/practice.php')" >進入練習</button></p>
         </div>
         <div>
-        <span>分類測驗：</span> 挑選20題(單選15題，對1題得4分，複選5題，對1題得8分)
+        <span>分類測驗：從指定科目挑選20題</span> 
         <p><a href="./test/beforetest.php?sj=1"> 第 1 題組</a>   工作項目01：作業準備(242題)，挑選 20 題</p>
         <p><a href="./test/beforetest.php?sj=2"> 第 2 題組</a>   工作項目02：應用軟體安裝及使用(405題)，挑選 20 題</p>
         <p><a href="./test/beforetest.php?sj=3"> 第 3 題組</a>   工作項目03：系統軟體安裝及使用(124題)，挑選 20 題</p>

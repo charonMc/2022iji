@@ -120,7 +120,7 @@ echo "
 <td class=\"border border-4 rounded-1 text-center\" style=\"width:6%\">題號</td>
  ";
 if ($_POST["page"] = "practice") {
-    echo "<td class=\"border border-4 rounded-1 text-center\" style=\"width:7%\">標準答案</td>";
+    echo "<td class=\"border border-4 rounded-1 text-center\" style=\"width:7%\">正確答案</td>";
 }
 echo "
 <td class=\"border border-4 rounded-1 text-center\" style=\"width:7%\" >你的答案</td>
@@ -151,7 +151,7 @@ foreach ($queNum as $key => $que) {
             for ($i = 0; $i < 4; $i++) {
                 $num = $i + 1;
                 $optnow = ${"opt" . $optrand[$i] . "Pic"};
-                $opt[$optrand[$i]] = "<input type=\"radio\" name=\"ans" . ($key + 1) . "\" value=\"" . ($i + 1) . "\">" . "<img src=\"" . $optnow . "\">" . "<br>";
+                $opt[$optrand[$i]] = "<input type=\"radio\" name=\"ans" . ($key + 1) . "\" value=\"" . ($i + 1) . "\">" . "<img src=\"." . $optnow . "\">" . "<br>";
                 array_push($optarr, $opt[$optrand[$i]]);
                 if ($optrand[$i] == $question['ans']) {
                     $ans = $i + 1;
@@ -177,7 +177,7 @@ foreach ($queNum as $key => $que) {
             for ($i = 0; $i < 4; $i++) {
                 $num = $i + 1;
                 $optnow = ${"opt" . $optrand[$i] . "Pic"};
-                $opt[$optrand[$i]] = "<input type=\"checkbox\" name=\"ans" . ($key + 1) . "\" value=\"" . ($i + 1) . "\">" . "<img src=\"" . $optnow . "\">" . "<br>";
+                $opt[$optrand[$i]] = "<input type=\"checkbox\" name=\"ans" . ($key + 1) . "\" value=\"" . ($i + 1) . "\">" . "<img src=\"." . $optnow . "\">" . "<br>";
                 array_push($optarr, $opt[$optrand[$i]]);
                 $ansarr = array_map('intval', str_split($question['ans']));
                 $ansnum = [];
@@ -215,10 +215,10 @@ foreach ($queNum as $key => $que) {
         ";
     // 練習頁面插入答案
     if ($_POST["page"] = "practice") {
-        echo "<td class=\"border border-4 rounded-1 text-center \" style=\"width:4%\"><span class=\"ans\" style=\"display:none;\">" . $ans . "</td>";
+        echo "<td class=\"border border-4 rounded-1 text-center \" style=\"width:4%;font-weight: 900;font-size:1.3rem\"><span class=\"ans\" style=\"display:none;\">" . $ans . "</td>";
     }
     echo "
-        <td class=\"border border-4 rounded-1 text-center myans\" style=\"width:4%\" id=\"ans" . ($key + 1) . "\"></td>
+        <td class=\"border border-4 rounded-1 text-center myans\" style=\"width:4%;font-weight: 900;font-size:1.3rem\" id=\"ans" . ($key + 1) . "\"></td>
         <td style=\"width:70%\">" .
         $question['que'] . "<br>";
 
