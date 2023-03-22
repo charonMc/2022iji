@@ -52,8 +52,8 @@ switch ($_POST["by"]) {
         //         array_push($queNum, $tmp);
         //     }
         // }
-        for ($i = 0; $i < $queCount; $i++){
-            $tmp=$subject['subject_start']+$i;
+        for ($i = 0; $i < $queCount; $i++) {
+            $tmp = $subject['subject_start'] + $i;
             array_push($queNum, $tmp);
         }
         // echo $subject['subject_name'];
@@ -72,8 +72,8 @@ switch ($_POST["by"]) {
         //         array_push($queNum, $tmp);
         //     }
         // }
-        for ($i = 0; $i < $queCount; $i++){
-            $tmp=$subject['subject_start']+$i;
+        for ($i = 0; $i < $queCount; $i++) {
+            $tmp = $subject['subject_start'] + $i;
             array_push($queNum, $tmp);
         }
 
@@ -83,7 +83,7 @@ switch ($_POST["by"]) {
 
         break;
 }
-        // dd($queNum);
+// dd($queNum);
 
 
 // 隨機選項用的陣列
@@ -97,26 +97,36 @@ for ($i = 0; $i < 4; $i++) {
     }
 }
 
+// 答題表格
+echo $_POST['page'];
 echo "<table class=\"col-8  m-auto\" style=\"border-collapse:collapse\">";
+if($_POST['page'] == "test"){
+    echo "<div class=\"col-8 m-auto border border-4 rounded-1\"style=\"border-collapse:collapse\">第一部分：單選題 - 15題</div>";
+}
+if ($_POST["page"] == "practice") {
+
 echo "
 <tr class=\"\" style=\"border-collapse:collapse;height:2rem;\">
-    <td class=\"\" style=\"width:6%\"></td>
-    <td class=\"text-center \" 
-        style=\"width:7%\">
-        <button class=\"btn btn-success\" 
-                style=\"width:80%;height:80%;font-size:10px\" id=\"toggleAns\">顯示答案</button></td>
+<td class=\"\" style=\"width:6%\"></td>
+<td class=\"text-center \" 
+style=\"width:7%\">
+<button class=\"btn btn-success\" 
+style=\"width:80%;height:80%;font-size:10px\" id=\"toggleAns\">顯示答案
+</button></td>
 
-</tr>
+</tr>";
+}
+echo "
 
 <tr class=\"border border-4 rounded-1\" style=\"border-collapse:collapse;height:2rem;\">
 <td class=\"border border-4 rounded-1 text-center\" style=\"width:6%\">題號</td>
- ";
-if ($_POST["page"] = "practice") {
+";
+if ($_POST["page"] == "practice") {
     echo "<td class=\"border border-4 rounded-1 text-center\" style=\"width:7%\">正確答案</td>";
 }
 echo "
 <td class=\"border border-4 rounded-1 text-center\" style=\"width:7%\" >你的答案</td>
-<td class=\"text-center\"style=\"width:70%;\">題目</td>";
+<td class=\"text-center\"style=\"width:70%;\">題目</td></tr>";
 foreach ($queNum as $key => $que) {
     $question = $Question->find($que);
 
@@ -128,7 +138,8 @@ foreach ($queNum as $key => $que) {
     // 對照資料表檢查有無附圖
     $hasPic = $Picture->find(['queNum' => $question['id']]);
 
-    // 選項隨機化 把選項按照1,2,3,4填入陣列使索引跟選項錯開 再把陣列用索引1,2,3,4取出達到隨機效果 答案的數字跟隨選項的value獲得索引
+    // 選項隨機化 把選項按照1,2,3,4填入陣列使索引跟選項錯開 
+    // 再把陣列用索引1,2,3,4取出達到隨機效果 答案的數字跟隨選項的value獲得索引
     // optrand       =>      若答案是opt1 則顯示的答案是3
     //     [0]3   opt1     1 opt2
     //     [1]1   opt2     2 opt4
@@ -204,14 +215,18 @@ foreach ($queNum as $key => $que) {
 
         }
     }
-
+    if($key == 101){
+        echo "<div class=\"col-8 m-auto border border-4 rounded-1\"style=\"border-collapse:collapse\">第二部分：多選題 - 5題</div>";
+    }
     echo "
         <tr class=\"border border-4 rounded-1\" style=\"border-collapse:collapse\">
         <td class=\"border border-4 rounded-1 text-center\" style=\"width:4%\">" . ($key + 1) . "</td>
         ";
     // 練習頁面插入答案
-    if ($_POST["page"] = "practice") {
-        echo "<td class=\"border border-4 rounded-1 text-center \" style=\"width:4%;font-weight: 900;font-size:1.3rem\"><span class=\"ans\" style=\"display:none;\">" . $ans . "</td>";
+    if ($_POST["page"] == "practice") {
+        echo "<td class=\"border border-4 rounded-1 text-center \" 
+                  style=\"width:4%;font-weight: 900;font-size:1.3rem\">
+                  <span class=\"ans\" style=\"display:none;\">" . $ans . "</td>";
     }
     echo "
         <td class=\"border border-4 rounded-1 text-center myans\" style=\"width:4%;font-weight: 900;font-size:1.3rem\" id=\"ans" . ($key + 1) . "\"></td>
@@ -230,22 +245,28 @@ foreach ($queNum as $key => $que) {
     echo "</td></tr>";
 
 
-    // 題號 答案 題目 選項
-    // echo "
-    // <tr class=\"border border-4 rounded-1\" style=\"border-collapse:collapse\">
-    //     <td class=\"border border-4 rounded-1 text-center\" style=\"width:3%\">".($key+1)."</td>
-    //     <td class=\"border border-4 rounded-1 text-center\" style=\"width:4%\">".$question['ans']."</td>
-    //     <td class=\"border border-4 rounded-1 text-center\" style=\"width:4%\" id=\"ans\"></td>
-    //     <td style=\"width:70%\">".
-    //     $question['que']."<br>".
-    //     "<input type=\"radio\" name=\"ans\" value=\"1\">".$question['opt1']."<br>".
-    //     "<input type=\"radio\" name=\"ans\" value=\"2\">".$question['opt2']."<br>".
-    //     "<input type=\"radio\" name=\"ans\" value=\"3\">".$question['opt3']."<br>".
-    //     "<input type=\"radio\" name=\"ans\" value=\"4\">".$question['opt4']."<br>".
-    //     "</td>
-    // </tr>
-    // ";
-
+    
 }
 echo "</table>";
+
 // to("../practice.php");
+
+
+
+
+
+// 題號 答案 題目 選項
+// echo "
+// <tr class=\"border border-4 rounded-1\" style=\"border-collapse:collapse\">
+//     <td class=\"border border-4 rounded-1 text-center\" style=\"width:3%\">".($key+1)."</td>
+//     <td class=\"border border-4 rounded-1 text-center\" style=\"width:4%\">".$question['ans']."</td>
+//     <td class=\"border border-4 rounded-1 text-center\" style=\"width:4%\" id=\"ans\"></td>
+//     <td style=\"width:70%\">".
+//     $question['que']."<br>".
+//     "<input type=\"radio\" name=\"ans\" value=\"1\">".$question['opt1']."<br>".
+//     "<input type=\"radio\" name=\"ans\" value=\"2\">".$question['opt2']."<br>".
+//     "<input type=\"radio\" name=\"ans\" value=\"3\">".$question['opt3']."<br>".
+//     "<input type=\"radio\" name=\"ans\" value=\"4\">".$question['opt4']."<br>".
+//     "</td>
+// </tr>
+// ";
