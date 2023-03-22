@@ -94,6 +94,7 @@ $(function() {
     })
     // 點選載入題目範圍的選項時自動切換到該選擇方式
     $(".input").on("click", function() {
+        console.log("clicked");
         switch ($(event.target).prop("name")) {
 
             case "min":

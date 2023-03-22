@@ -107,7 +107,7 @@ if (in_array($_GET['sj'], $notnum)) {
         </table>
         <div>
             <button type="button" class="btn">開始測驗</button>
-            <button type="button" class="btn">算了,我再想想</button>
+            <button type="button" class="btn">算了,我再去練練</button>
         </div>
     </div>
 </body>
