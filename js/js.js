@@ -132,8 +132,7 @@ window.close();
         });
 
 })
-function to(e){
-    console.log(e);
-    window.open(e,"_blank","width=960,height=900");
+function gotopractice(){
+    window.open("./practice/practice.php","_blank","width=960,height=900");
 }
 
