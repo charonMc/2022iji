@@ -17,7 +17,7 @@ $(function() {
         // by min max rand job common
 
         //傳到後端處理並回傳題目
-        $.post("./api/loadquestion.php", queform, (que) => {
+        $.post("../api/loadquestion.php", queform, (que) => {
             console.log("load success");
             // que=JSON.parse(data);
             // console.log(que);
@@ -132,6 +132,6 @@ window.close();
 
 })
 function gotopractice(){
-    window.open("practice.php","_blank","width=960,height=900");
+    window.open("./practice/practice.php","_blank","width=960,height=900");
 }
 
