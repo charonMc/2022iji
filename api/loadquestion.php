@@ -1,7 +1,7 @@
 <?php
 include_once("base.php");
 
-dd($_POST);
+// dd($_POST);
 
 
 // $_POST["by"]決定選擇題目的方式 
@@ -98,7 +98,7 @@ for ($i = 0; $i < 4; $i++) {
 }
 
 // 答題表格
-echo $_POST['page'];
+// echo $_POST['page'];
 echo "<table class=\"col-8  m-auto\" style=\"border-collapse:collapse\">";
 if($_POST['page'] == "test"){
     echo "<div class=\"col-8 m-auto border border-4 rounded-1\"style=\"border-collapse:collapse\">第一部分：單選題 - 15題</div>";
