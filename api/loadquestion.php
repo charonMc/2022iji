@@ -131,10 +131,10 @@ foreach ($queNum as $key => $que) {
     $question = $Question->find($que);
 
     $quePic = "../picture/" . $question['id'] . "q.jpg";
-    $opt1Pic = "../picture/" . $question['id'] . "a1.jpg";
-    $opt2Pic = "../picture/" . $question['id'] . "a2.jpg";
-    $opt3Pic = "../picture/" . $question['id'] . "a3.jpg";
-    $opt4Pic = "../picture/" . $question['id'] . "a4.jpg";
+    $opt1Pic = "./picture/" . $question['id'] . "a1.jpg";
+    $opt2Pic = "./picture/" . $question['id'] . "a2.jpg";
+    $opt3Pic = "./picture/" . $question['id'] . "a3.jpg";
+    $opt4Pic = "./picture/" . $question['id'] . "a4.jpg";
     // 對照資料表檢查有無附圖
     $hasPic = $Picture->find(['queNum' => $question['id']]);
 
@@ -149,7 +149,7 @@ foreach ($queNum as $key => $que) {
     $ansnum = [];
     if ($question['ans'] < 10) {
         // 單選
-        if (file_exists($opt1Pic)) {
+        if (file_exists(".".$opt1Pic)) {
             // 圖片選項
             for ($i = 0; $i < 4; $i++) {
                 $num = $i + 1;
@@ -177,7 +177,7 @@ foreach ($queNum as $key => $que) {
         }
     } else {
         // 多選
-        if (file_exists($opt1Pic)) {
+        if (file_exists(".".$opt1Pic)) {
             // 圖片選項
             for ($i = 0; $i < 4; $i++) {
                 $num = $i + 1;
